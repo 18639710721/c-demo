@@ -1,0 +1,3 @@
+C:/Users/2907568338/Desktop/document/C language/sudoku/cmake-build-debug/CMakeFiles/sudoku.dir
+C:/Users/2907568338/Desktop/document/C language/sudoku/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/2907568338/Desktop/document/C language/sudoku/cmake-build-debug/CMakeFiles/rebuild_cache.dir

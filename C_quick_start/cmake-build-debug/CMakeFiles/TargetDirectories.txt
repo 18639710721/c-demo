@@ -1,0 +1,3 @@
+C:/Users/2907568338/Desktop/document/C language/C_quick_start/cmake-build-debug/CMakeFiles/C_quick_start.dir
+C:/Users/2907568338/Desktop/document/C language/C_quick_start/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/2907568338/Desktop/document/C language/C_quick_start/cmake-build-debug/CMakeFiles/rebuild_cache.dir
