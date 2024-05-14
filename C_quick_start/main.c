@@ -23,8 +23,13 @@ void better_calculator();
 void struct_test();
 void while_loop_test();
 void for_loop_test();
+void two_dimension_array_test();
+void memory_address_test();
+void pointer_test();
+void file_use();
+void guess_number();
 
-        int main() {
+int main() {
     windows_cmd_support_utf8();
 //    draw_pig();
 //    narrate_story();
@@ -43,7 +48,12 @@ void for_loop_test();
 //    better_calculator();
 //    struct_test();
 //    while_loop_test();
-    for_loop_test();
+//    for_loop_test();
+//    two_dimension_array_test();
+//    memory_address_test();
+//    pointer_test();
+//    file_use();
+    guess_number();
     return 0;
 }
 
@@ -311,6 +321,8 @@ void while_loop_test() {
     }
 }
 
+
+// for loop
 void for_loop_test() {
     for(int i = 0; i < 5; i++) {
         printf("%d\n", i);
@@ -322,4 +334,119 @@ void for_loop_test() {
         printf("%d\n", luckyNumbers[i]);
     }
 
+}
+
+// 2D Arrays & Nested Loops
+void two_dimension_array_test() {
+    int nums[3][2] = {
+            {1, 2},
+            {3, 4},
+            {5, 6}
+    };
+    for(int i = 0; i < 3; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", nums[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/* address && pointer
+
+RAM  random access memory
+
+when refer to the name , it's actually going to refer to
+ a specific memory address
+c在访问age的数据时，不是用的name，而是该值存储在物理内存中的内存地址.
+所有的值都有一个内存地址
+
+ 把程序加载到内存中，真实的情况是根据地址去访问值
+ */
+void memory_address_test() {
+    int age = 20;
+    double gpa = 3.5;
+    char grade = 'A';
+
+    printf("age: %p\ngpa: %p\ngrade: %p", &age, &gpa, &grade);
+
+}
+
+// 指针也是一种数据类型 只不过存储的是内存地址而已
+void pointer_test() {
+    int age = 30;
+    int * pAge = &age;
+    double gpa = 3.4;
+    double * pGpa = &gpa;
+    char grade = 'A';
+    char * pGrade = &grade;
+
+    printf("age's memory address: %p\n", &age);
+    printf("age's memory address: %p\n", pAge);  // 打印的是变量的值
+    printf("age's memory address: %p\n", &pAge);  // 打印的是变量的值
+
+    // dereference operator
+    printf("%d\n", *pAge);
+    printf("%d\n", *&*&age);
+
+}
+
+void file_use() {
+    FILE * fpointer = fopen("employees.txt", "r");
+//    fprintf(fpointer, "Jim, Salesman\nPam, Receptionist\nOscar, Accounting");
+//    fprintf(fpointer, "\nKelly, Customer Service");
+
+    char line[255];
+    fgets(line, 255, fpointer);  // 读取一行
+    fgets(line, 255, fpointer);
+    printf("%s", line);
+
+
+    fclose(fpointer);
+}
+
+/*
+1. 实现在一个死循环里面的用户猜数字游戏
+    I 写死的数字 读取到的用户输入
+    P 判断是否相等
+    O 结束条件为相等
+
+ 2. 实现一个限制用户输入3次的猜数字游戏
+    I 写死的数字 读取到的用户输入 输入限制
+     用户输入次数统计 是否猜中的状态判断
+    P 如何3次内猜不中及置猜中状态为false 结束循环
+      如果猜中跳出循环 默认状态为true
+      循环结束的条件 猜中了并且状态为1
+
+    O 根据状态输出是否猜中
+
+
+
+*/
+void guess_number() {
+    int secretNumber = 5;
+    int guess = 0;   // 默认为0
+    int count = 0;
+    int countLimit = 3;
+    int success_status = 1;  // 默认是成功的
+
+    // 因为需要用户不停的输入 所以使用while循环
+    while (guess != secretNumber && success_status == 1) {
+        if (count < countLimit) {
+            printf("Enter the number: ");
+            scanf_s("%d", &guess);
+            count++;
+            printf("您还有%d机会\n", countLimit - count);
+
+        } else {
+            success_status = 0;
+        }
+
+    }
+
+    // 根据status的状态判断是猜错还是猜对了
+    if (success_status == 1) {
+        printf("You win!");
+    } else {
+        printf("You fail!");
+    }
 }
